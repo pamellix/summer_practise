@@ -52,22 +52,27 @@ public class ShipManager {
         }
     }
 
-    public void getPort(String name) {
-        String SQL = "SELECT * FROM ports WHERE name = " + name;
+    public void getPort(String namePort) {
+        String SQL = "SELECT * FROM ports WHERE name = ?";
 
         try (Connection connection = connect();
-             PreparedStatement pst = connection.prepareStatement(SQL);
-             ResultSet rs = pst.executeQuery()) {
-            while (rs.next()) {
-                System.out.println(rs.getInt("id") + "\t" +
-                        rs.getString("name") + "\t" +
-                        rs.getString("city") + "\t" +
-                        rs.getString("quantity_of_ships"));
+             PreparedStatement pst = connection.prepareStatement(SQL)) {
+
+            pst.setString(1, namePort); // Set the parameter to the namePort value
+
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    System.out.println(rs.getInt("id") + "\t" +
+                            rs.getString("name") + "\t" +
+                            rs.getString("city") + "\t" +
+                            rs.getString("quantity_of_ships"));
+                }
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
+
 
     public void getAllPorts() {
         String SQL = "SELECT * FROM ports";
@@ -95,7 +100,7 @@ public class ShipManager {
             pst.setString(2, capacity);
             pst.setString(3, size);
             pst.setString(4, speed);
-            pst.setInt(3, routeId);
+            pst.setInt(5, routeId);
             pst.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -132,23 +137,28 @@ public class ShipManager {
     }
 
     public void getShip(String name) {
-        String SQL = "SELECT * FROM ships WHERE name = " + name;
+        String SQL = "SELECT * FROM ships WHERE name = ?";
 
         try (Connection connection = connect();
-             PreparedStatement pst = connection.prepareStatement(SQL);
-             ResultSet rs = pst.executeQuery()) {
-            while (rs.next()) {
-                System.out.println(rs.getInt("id") + "\t" +
-                        rs.getString("name") + "\t" +
-                        rs.getString("capacity") + "\t" +
-                        rs.getString("size") + "\t" +
-                        rs.getString("speed") + "\t" +
-                        rs.getInt("route"));
+             PreparedStatement pst = connection.prepareStatement(SQL)) {
+
+            pst.setString(1, name); // Set the parameter to the name value
+
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    System.out.println(rs.getInt("id") + "\t" +
+                            rs.getString("name") + "\t" +
+                            rs.getString("capacity") + "\t" +
+                            rs.getString("size") + "\t" +
+                            rs.getString("speed") + "\t" +
+                            rs.getInt("route"));
+                }
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
+
 
     public void getAllShips() {
         String SQL = "SELECT * FROM ships";
@@ -213,22 +223,27 @@ public class ShipManager {
     }
 
     public void getTourist(String surname) {
-        String SQL = "SELECT * FROM tourists WHERE surname = " + surname;
+        String SQL = "SELECT * FROM tourists WHERE surname = ?";
 
         try (Connection connection = connect();
-             PreparedStatement pst = connection.prepareStatement(SQL);
-             ResultSet rs = pst.executeQuery()) {
-            while (rs.next()) {
-                System.out.println(rs.getInt("id") + "\t" +
-                        rs.getString("name") + "\t" +
-                        rs.getString("surname") + "\t" +
-                        rs.getInt("ship") + "\t" +
-                        rs.getInt("quantity_of_days"));
+             PreparedStatement pst = connection.prepareStatement(SQL)) {
+
+            pst.setString(1, surname); // Set the parameter to the surname value
+
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    System.out.println(rs.getInt("id") + "\t" +
+                            rs.getString("name") + "\t" +
+                            rs.getString("surname") + "\t" +
+                            rs.getInt("ship") + "\t" +
+                            rs.getInt("quantity_of_days"));
+                }
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
+
 
     public void getAllTourists() {
         String SQL = "SELECT * FROM tourists";
