@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea7c7434-eee4-4405-bf8f-b267f15d38e3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/postgresql_42_7_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/practice/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/practice/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/practice/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/practice/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/practice/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/practice/practice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/summer_practise.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShipManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShipManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +79,7 @@
       <workItem from="1721060343975" duration="594000" />
       <workItem from="1721122822412" duration="319000" />
       <workItem from="1721123167333" duration="62000" />
-      <workItem from="1721123246188" duration="38000" />
+      <workItem from="1721123246188" duration="3479000" />
     </task>
     <servers />
   </component>

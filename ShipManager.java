@@ -20,6 +20,7 @@ public class ShipManager {
             pst.setString(2, city);
             pst.setString(3, quantity_of_ships);
             pst.executeUpdate();
+            System.out.println("Port added successfully");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -35,6 +36,7 @@ public class ShipManager {
             pst.setString(3, quantity_of_ships);
             pst.setInt(5, portId);
             pst.executeUpdate();
+            System.out.println("Port updated successfully");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -47,6 +49,7 @@ public class ShipManager {
              PreparedStatement pst = connection.prepareStatement(SQL)) {
             pst.setInt(1, portId);
             pst.executeUpdate();
+            System.out.println("Port deleted successfully");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -101,6 +104,7 @@ public class ShipManager {
             pst.setString(3, size);
             pst.setString(4, speed);
             pst.setInt(5, routeId);
+            System.out.println("Ship added successfully");
             pst.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -119,6 +123,7 @@ public class ShipManager {
             pst.setInt(5, route);
             pst.setInt(6, shipId);
             pst.executeUpdate();
+            System.out.println("Port updated successfully");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -131,6 +136,7 @@ public class ShipManager {
              PreparedStatement pst = connection.prepareStatement(SQL)) {
             pst.setInt(1, shipId);
             pst.executeUpdate();
+            System.out.println("Ship deleted successfully");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -189,6 +195,7 @@ public class ShipManager {
             pst.setInt(3, shipId);
             pst.setInt(4, quantityOfDays);
             pst.executeUpdate();
+            System.out.println("Tourist added successfully");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -205,6 +212,7 @@ public class ShipManager {
             pst.setInt(4, quantityOfDays);
             pst.setInt(5, touristId);
             pst.executeUpdate();
+            System.out.println("Tourist updated successfully");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -217,6 +225,7 @@ public class ShipManager {
              PreparedStatement pst = connection.prepareStatement(SQL)) {
             pst.setInt(1, touristId);
             pst.executeUpdate();
+            System.out.println("Tourist deleted successfully");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
