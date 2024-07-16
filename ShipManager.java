@@ -2,19 +2,18 @@ import java.sql.*;
 
 public class ShipManager {
 
-    // Подключение
-    public Connection connect() throws SQLException {
+    private Connection connection() throws SQLException {
         String password = "postgres";
         String user = "postgres";
-        String dbName = "postgres";
+        String databaseName = "postgres";
         String url = "jdbc:postgresql://217.25.92.169:5432/";
-        return DriverManager.getConnection(url + dbName, user, password);
+        return DriverManager.getConnection(url + databaseName, user, password);
     }
 
     public void addPort(String name, String city, String quantity_of_ships) {
         String SQL = "INSERT INTO ports(name, city, quantity_of_ships) VALUES(?,?,?)";
 
-        try (Connection connect = connect();
+        try (Connection connect = connection();
              PreparedStatement pst = connect.prepareStatement(SQL)) {
             pst.setString(1, name);
             pst.setString(2, city);
@@ -29,12 +28,12 @@ public class ShipManager {
     public void updatePort(int portId, String name, String city, String quantity_of_ships) {
         String SQL = "UPDATE ports SET name = ?, city = ?, quantity_of_ships = ? WHERE id = ?";
 
-        try (Connection connection = connect();
+        try (Connection connection = connection();
              PreparedStatement pst = connection.prepareStatement(SQL)) {
             pst.setString(1, name);
             pst.setString(2, city);
             pst.setString(3, quantity_of_ships);
-            pst.setInt(5, portId);
+            pst.setInt(4, portId);
             pst.executeUpdate();
             System.out.println("Port updated successfully");
         } catch (SQLException ex) {
@@ -45,7 +44,7 @@ public class ShipManager {
     public void deletePort(int portId) {
         String SQL = "DELETE FROM ports WHERE id = ?";
 
-        try (Connection connection = connect();
+        try (Connection connection = connection();
              PreparedStatement pst = connection.prepareStatement(SQL)) {
             pst.setInt(1, portId);
             pst.executeUpdate();
@@ -58,10 +57,10 @@ public class ShipManager {
     public void getPort(String namePort) {
         String SQL = "SELECT * FROM ports WHERE name = ?";
 
-        try (Connection connection = connect();
+        try (Connection connection = connection();
              PreparedStatement pst = connection.prepareStatement(SQL)) {
 
-            pst.setString(1, namePort); // Set the parameter to the namePort value
+            pst.setString(1, namePort);
 
             try (ResultSet rs = pst.executeQuery()) {
                 while (rs.next()) {
@@ -80,7 +79,7 @@ public class ShipManager {
     public void getAllPorts() {
         String SQL = "SELECT * FROM ports";
 
-        try (Connection connection = connect();
+        try (Connection connection = connection();
              PreparedStatement pst = connection.prepareStatement(SQL);
              ResultSet rs = pst.executeQuery()) {
             while (rs.next()) {
@@ -97,7 +96,7 @@ public class ShipManager {
     public void addShip(String name, String capacity, String size, String speed, int routeId) {
         String SQL = "INSERT INTO ships(name, capacity, size, speed, route) VALUES(?,?,?,?,?)";
 
-        try (Connection connection = connect();
+        try (Connection connection = connection();
              PreparedStatement pst = connection.prepareStatement(SQL)) {
             pst.setString(1, name);
             pst.setString(2, capacity);
@@ -114,7 +113,7 @@ public class ShipManager {
     public void updateShip(int shipId, String name, String capacity, String size, String speed, int route) {
         String SQL = "UPDATE ships SET name = ?, capacity = ?, size = ?, speed = ?, route = ? WHERE id = ?";
 
-        try (Connection connection = connect();
+        try (Connection connection = connection();
              PreparedStatement pst = connection.prepareStatement(SQL)) {
             pst.setString(1, name);
             pst.setString(2, capacity);
@@ -132,7 +131,7 @@ public class ShipManager {
     public void deleteShip(int shipId) {
         String SQL = "DELETE FROM ships WHERE id = ?";
 
-        try (Connection connection = connect();
+        try (Connection connection = connection();
              PreparedStatement pst = connection.prepareStatement(SQL)) {
             pst.setInt(1, shipId);
             pst.executeUpdate();
@@ -145,10 +144,10 @@ public class ShipManager {
     public void getShip(String name) {
         String SQL = "SELECT * FROM ships WHERE name = ?";
 
-        try (Connection connection = connect();
+        try (Connection connection = connection();
              PreparedStatement pst = connection.prepareStatement(SQL)) {
 
-            pst.setString(1, name); // Set the parameter to the name value
+            pst.setString(1, name);
 
             try (ResultSet rs = pst.executeQuery()) {
                 while (rs.next()) {
@@ -169,7 +168,7 @@ public class ShipManager {
     public void getAllShips() {
         String SQL = "SELECT * FROM ships";
 
-        try (Connection connection = connect();
+        try (Connection connection = connection();
              PreparedStatement pst = connection.prepareStatement(SQL);
              ResultSet rs = pst.executeQuery()) {
             while (rs.next()) {
@@ -188,7 +187,7 @@ public class ShipManager {
     public void addTourist(String name, String surname, int shipId, int quantityOfDays) {
         String SQL = "INSERT INTO tourists(name, surname, ship, quantity_of_days) VALUES(?,?,?,?)";
 
-        try (Connection connection = connect();
+        try (Connection connection = connection();
              PreparedStatement pst = connection.prepareStatement(SQL)) {
             pst.setString(1, name);
             pst.setString(2, surname);
@@ -204,7 +203,7 @@ public class ShipManager {
     public void updateTourist(int touristId, String name, String surname, int shipId, int quantityOfDays) {
         String SQL = "UPDATE tourists SET name = ?, surname = ?, ship = ?, quantity_of_days = ? WHERE id = ?";
 
-        try (Connection connection = connect();
+        try (Connection connection = connection();
              PreparedStatement pst = connection.prepareStatement(SQL)) {
             pst.setString(1, name);
             pst.setString(2, surname);
@@ -221,7 +220,7 @@ public class ShipManager {
     public void deleteTourist(int touristId) {
         String SQL = "DELETE FROM tourists WHERE id = ?";
 
-        try (Connection connection = connect();
+        try (Connection connection = connection();
              PreparedStatement pst = connection.prepareStatement(SQL)) {
             pst.setInt(1, touristId);
             pst.executeUpdate();
@@ -234,10 +233,10 @@ public class ShipManager {
     public void getTourist(String surname) {
         String SQL = "SELECT * FROM tourists WHERE surname = ?";
 
-        try (Connection connection = connect();
+        try (Connection connection = connection();
              PreparedStatement pst = connection.prepareStatement(SQL)) {
 
-            pst.setString(1, surname); // Set the parameter to the surname value
+            pst.setString(1, surname);
 
             try (ResultSet rs = pst.executeQuery()) {
                 while (rs.next()) {
@@ -257,7 +256,7 @@ public class ShipManager {
     public void getAllTourists() {
         String SQL = "SELECT * FROM tourists";
 
-        try (Connection connection = connect();
+        try (Connection connection = connection();
              PreparedStatement pst = connection.prepareStatement(SQL);
              ResultSet rs = pst.executeQuery()) {
             while (rs.next()) {
