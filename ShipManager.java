@@ -180,7 +180,7 @@ public class ShipManager {
     }
 
     public void addTourist(String name, String surname, int shipId, int quantityOfDays) {
-        String SQL = "INSERT INTO tourists(name, surname, ship, quantity_of_days) VALUES(?,?,?)";
+        String SQL = "INSERT INTO tourists(name, surname, ship, quantity_of_days) VALUES(?,?,?,?)";
 
         try (Connection connection = connect();
              PreparedStatement pst = connection.prepareStatement(SQL)) {
